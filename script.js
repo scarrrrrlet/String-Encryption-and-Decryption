@@ -21,7 +21,7 @@ function decryptText() {
             const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
             const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
 
-            if (decryptedText) {
+            if(decryptedText) {
                 resultOutput.value = decryptedText;
             } else {
                 resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
@@ -32,5 +32,31 @@ function decryptText() {
         }
     } else {
         alert("Please enter the encrypted text and the secret key.");
+    }
+}
+
+function copyToClipboard() {
+    const resultOutput = document.getElementById('result-output');
+    const copyButton = document.getElementById('copy-button');
+    const textToCopy = resultOutput.value;
+
+    if (textToCopy) {
+        resultOutput.select();
+        resultOutput.setSelectionRange(0, 99999); 
+
+        try {
+            document.execCommand('copy');
+            
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyButton.textContent = 'Copy';
+            }, 2000); 
+
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+            alert('Sorry, your browser does not support this feature.');
+        }
+
+        window.getSelection().removeAllRanges();
     }
 }

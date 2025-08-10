@@ -112,7 +112,7 @@ button:hover {
 
 #copy-button {
     display: block;
-    margin: 0rem auto 0; 
+    margin: 1.5rem auto 0; 
     width: 180px; 
     padding: 10px 15px;
     border-radius: 6px;
@@ -131,4 +131,5 @@ button:hover {
     background-color: #4f46e5;
     color: white;
 }
+
 

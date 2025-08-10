@@ -1,4 +1,3 @@
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* --- Reset and Basic Setup --- */
@@ -17,36 +16,28 @@ body {
     min-height: 100vh;
     padding: 1rem;
 
-    /* --- UPDATED BACKGROUND IMAGE CODE --- */
-    /* The URL now points to your local image file */
     background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('images/background.jpg');
 
-    /* These properties ensure the image covers the whole screen and stays fixed */
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
-/* --- Main Container --- */
 .container {
     background: #1e1e1e;
-    /* Lighter container background */
     padding: 2rem 3rem;
     border-radius: 16px;
     border: 1px solid #2a2a2a;
     box-shadow: 0 0 40px rgba(79, 70, 229, 0.1);
-    /* Updated outer glow color */
     width: 600px;
     max-width: 100%;
 }
 
-/* --- Header Title --- */
 h1 {
     text-align: center;
     font-weight: 600;
     font-size: 2.2rem;
-    /* This creates the new violet-blue gradient text effect */
     background: linear-gradient(90deg, #818cf8, #4f46e5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,7 +46,6 @@ h1 {
     margin-bottom: 2.5rem;
 }
 
-/* --- Input and Textarea Fields --- */
 textarea,
 input[type="password"] {
     width: 100%;
@@ -64,36 +54,29 @@ input[type="password"] {
     border-radius: 8px;
     border: 1px solid #333;
     background-color: #121212;
-    /* Match the main background */
     color: #f0f0f0;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Placeholder Text Style --- */
 textarea::placeholder,
 input::placeholder {
     color: #666;
 }
 
-/* --- The Glow Effect on Focus --- */
 textarea:focus,
 input:focus {
     outline: none;
     border-color: #4f46e5;
-    /* Violet-blue border on focus */
     box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
-    /* The violet-blue glow */
 }
 
-/* --- Button Styling --- */
 .buttons {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    /* CHANGED: Added space below the buttons */
 }
 
 button {
@@ -107,23 +90,46 @@ button {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    /* The new violet-blue gradient */
     background: linear-gradient(90deg, #6366f1, #4f46e5);
     background-size: 200% auto;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.4s ease;
 }
 
-/* --- Button Hover Effect --- */
 button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-    /* Updated hover glow */
     background-position: right center;
 }
 
-/* --- Result Area --- */
 #result-output {
     min-height: 120px;
     font-family: 'Courier New', Courier, monospace;
     background-color: #101010;
+}
+
+.result-container {
+    position: relative;
+    width: 100%;
+}
+
+#copy-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #4f46e5;
+    background-color: #1e1e1e;
+    color: #a9a9a9;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#copy-button:hover {
+    background-color: #4f46e5;
+    color: white;
 }

@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/user-attachments/assets/dd3a3b5a-2776-4a1d-a2f0-936611f71a7d" alt="Secure Vault - Text Encryption Tool" width="120">
-</p>
-
 <h1 align="center">Secure Vault - Text Encryption Tool</h1>
 
 <p align="center">

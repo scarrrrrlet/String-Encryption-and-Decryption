@@ -12,7 +12,7 @@ function encryptText() {
 }
 
 function decryptText() {
-    const encryptedText = document.getElementById('text-input').value;
+    const encryptedText = document.getElementById('text-input').value.trim();
     const secretKey = document.getElementById('secret-key').value;
     const resultOutput = document.getElementById('result-output');
 

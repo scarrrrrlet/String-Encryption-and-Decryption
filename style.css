@@ -135,6 +135,7 @@ button:hover {
 .error {
     border-color: #d05858 !important;
     box-shadow: 0 0 0 4px rgba(224,59,59,0.06);
+    color: #d05858;
 }
 
 .error-msg{

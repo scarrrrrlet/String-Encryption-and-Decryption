@@ -30,6 +30,7 @@ function encryptText() {
     const text = textInput.value;
     const secretKey = secretInput.value;
 
+    resultOutput.classList.remove('error');
     resultOutput.value = "";
 
     if (!text || !secretKey) {
@@ -48,6 +49,7 @@ function decryptText() {
     const encryptedText = textInput.value.trim();
     const secretKey = secretInput.value;
 
+    resultOutput.classList.remove('error');
     resultOutput.value = "";
 
     if (!encryptedText || !secretKey) {
@@ -59,6 +61,7 @@ function decryptText() {
     }
 
     if (!base64Regex.test(encryptedText)) {
+        resultOutput.classList.add('error');
         resultOutput.value = "Invalid Base64."
         return
     }
@@ -73,6 +76,7 @@ function decryptText() {
         }
 
     } catch (e) {}
+    resultOutput.classList.add('error');
     resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
 }
 

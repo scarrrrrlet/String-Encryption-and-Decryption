@@ -28,6 +28,8 @@ function encryptText() {
     const text = textInput.value;
     const secretKey = secretInput.value;
 
+    resultOutput.value = "";
+
     if (text && secretKey) {
         const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
         resultOutput.value = encrypted;
@@ -42,6 +44,8 @@ function encryptText() {
 function decryptText() {
     const encryptedText = textInput.value.trim();
     const secretKey = secretInput.value;
+
+    resultOutput.value = "";
 
     if (encryptedText && secretKey) {
         try {

@@ -32,15 +32,16 @@ function encryptText() {
 
     resultOutput.value = "";
 
-    if (text && secretKey) {
-        const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
-        resultOutput.value = encrypted;
-    } else {
+    if (!text || !secretKey) {
         if (!text)
             showError(textInput);
         if (!secretKey)
             showError(secretInput);
+        return;
     }
+
+    const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
+    resultOutput.value = encrypted;
 }
 
 function decryptText() {
@@ -49,55 +50,54 @@ function decryptText() {
 
     resultOutput.value = "";
 
-    if (encryptedText && secretKey) {
-
-        if (!base64Regex.test(encryptedText)) {
-            resultOutput.value = "Invalid Base64."
-            return
-        }
-
-        try {
-            const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
-            const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
-
-            if(decryptedText) {
-                resultOutput.value = decryptedText;
-            } else {
-                resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
-            }
-
-        } catch (e) {
-            resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
-        }
-    } else {
+    if (!encryptedText || !secretKey) {
         if (!encryptedText)
             showError(textInput);
         if (!secretKey)
             showError(secretInput);
+        return;
     }
+
+    if (!base64Regex.test(encryptedText)) {
+        resultOutput.value = "Invalid Base64."
+        return
+    }
+
+    try {
+        const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
+        const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
+
+        if(decryptedText) {
+            resultOutput.value = decryptedText;
+            return;
+        }
+
+    } catch (e) {}
+    resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
 }
 
 function copyToClipboard() {
     const copyButton = document.getElementById('copy-button');
     const textToCopy = resultOutput.value;
 
-    if (textToCopy) {
-        resultOutput.select();
-        resultOutput.setSelectionRange(0, 99999);
-
-        try {
-            document.execCommand('copy');
-
-            copyButton.textContent = 'Copied!';
-            setTimeout(() => {
-                copyButton.textContent = 'Copy';
-            }, 2000);
-
-        } catch (err) {
-            console.error('Failed to copy text: ', err);
-            alert('Sorry, your browser does not support this feature.');
-        }
-
-        window.getSelection().removeAllRanges();
+    if (!textToCopy) {
+        return;
     }
+
+    resultOutput.select();
+    resultOutput.setSelectionRange(0, 99999);
+
+    try {
+        document.execCommand('copy');
+
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => {
+            copyButton.textContent = 'Copy';
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+        alert('Sorry, your browser does not support this feature.');
+    }
+
+    window.getSelection().removeAllRanges();
 }

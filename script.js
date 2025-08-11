@@ -42,15 +42,15 @@ function copyToClipboard() {
 
     if (textToCopy) {
         resultOutput.select();
-        resultOutput.setSelectionRange(0, 99999); 
+        resultOutput.setSelectionRange(0, 99999);
 
         try {
             document.execCommand('copy');
-            
+
             copyButton.textContent = 'Copied!';
             setTimeout(() => {
                 copyButton.textContent = 'Copy';
-            }, 2000); 
+            }, 2000);
 
         } catch (err) {
             console.error('Failed to copy text: ', err);

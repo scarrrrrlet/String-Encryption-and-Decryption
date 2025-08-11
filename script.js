@@ -36,7 +36,7 @@ function encryptText() {
         const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
         resultOutput.value = encrypted;
     } else {
-        if (!encryptedText)
+        if (!text)
             showError(textInput);
         if (!secretKey)
             showError(secretInput);

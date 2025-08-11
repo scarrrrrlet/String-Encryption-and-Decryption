@@ -2,6 +2,8 @@ const textInput = document.getElementById('text-input');
 const secretInput = document.getElementById('secret-key');
 const resultOutput = document.getElementById('result-output');
 
+resultOutput.value = "";
+
 const base64Regex = /^[A-Za-z0-9+\/]+={0,3}$/;
 
 function showError(input) {

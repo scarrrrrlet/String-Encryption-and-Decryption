@@ -1,7 +1,10 @@
+const textInput = document.getElementById('text-input');
+const secretInput = document.getElementById('secret-key');
+const resultOutput = document.getElementById('result-output');
+
 function encryptText() {
-    const text = document.getElementById('text-input').value;
-    const secretKey = document.getElementById('secret-key').value;
-    const resultOutput = document.getElementById('result-output');
+    const text = textInput.value;
+    const secretKey = secretInput.value;
 
     if (text && secretKey) {
         const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
@@ -12,9 +15,8 @@ function encryptText() {
 }
 
 function decryptText() {
-    const encryptedText = document.getElementById('text-input').value.trim();
-    const secretKey = document.getElementById('secret-key').value;
-    const resultOutput = document.getElementById('result-output');
+    const encryptedText = textInput.value.trim();
+    const secretKey = secretInput.value;
 
     if (encryptedText && secretKey) {
         try {
@@ -36,7 +38,6 @@ function decryptText() {
 }
 
 function copyToClipboard() {
-    const resultOutput = document.getElementById('result-output');
     const copyButton = document.getElementById('copy-button');
     const textToCopy = resultOutput.value;
 

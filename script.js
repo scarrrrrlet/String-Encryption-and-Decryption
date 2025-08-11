@@ -2,6 +2,8 @@ const textInput = document.getElementById('text-input');
 const secretInput = document.getElementById('secret-key');
 const resultOutput = document.getElementById('result-output');
 
+const base64Regex = /^[A-Za-z0-9+\/]+={0,3}$/;
+
 function showError(input) {
     input.classList.add('error');
     const err = document.getElementById(input.id + '-err');
@@ -48,6 +50,12 @@ function decryptText() {
     resultOutput.value = "";
 
     if (encryptedText && secretKey) {
+
+        if (!base64Regex.test(encryptedText)) {
+            resultOutput.value = "Invalid Base64."
+            return
+        }
+
         try {
             const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
             const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);

@@ -2,6 +2,28 @@ const textInput = document.getElementById('text-input');
 const secretInput = document.getElementById('secret-key');
 const resultOutput = document.getElementById('result-output');
 
+function showError(input) {
+    input.classList.add('error');
+    const err = document.getElementById(input.id + '-err');
+    if (err){
+        err.classList.add('error-visible');
+    }
+    input.setAttribute('aria-invalid', 'true');
+}
+
+function clearError(input) {
+    input.classList.remove('error');
+    const err = document.getElementById(input.id + '-err');
+    if (err) {
+        err.classList.remove('error-visible');
+    }
+    input.removeAttribute('aria-invalid');
+}
+
+[textInput, secretInput].forEach(input =>
+    input.addEventListener('focus', () => clearError(input))
+)
+
 function encryptText() {
     const text = textInput.value;
     const secretKey = secretInput.value;
@@ -10,7 +32,10 @@ function encryptText() {
         const encrypted = CryptoJS.AES.encrypt(text, secretKey).toString();
         resultOutput.value = encrypted;
     } else {
-        alert("Please enter text and a secret key.");
+        if (!encryptedText)
+            showError(textInput);
+        if (!secretKey)
+            showError(secretInput);
     }
 }
 
@@ -33,7 +58,10 @@ function decryptText() {
             resultOutput.value = "Decryption failed. Invalid key or ciphertext.";
         }
     } else {
-        alert("Please enter the encrypted text and the secret key.");
+        if (!encryptedText)
+            showError(textInput);
+        if (!secretKey)
+            showError(secretInput);
     }
 }
 

@@ -132,4 +132,22 @@ button:hover {
     color: white;
 }
 
+.error {
+    border-color: #d05858 !important;
+    box-shadow: 0 0 0 4px rgba(224,59,59,0.06);
+}
 
+.error-msg{
+    font-size: 13px;
+    color: #d05858;
+    height: 18px; /* reserve space */
+    /*visibility: hidden;*/
+    opacity: 0;
+    transition: visibility 0s linear .14s, opacity .14s;
+}
+
+.error-visible{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}

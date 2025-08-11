@@ -56,7 +56,7 @@ All you need is a modern web browser.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/scarrrrrlet/String-Encryption-and-Decryption.git](https://github.com/scarrrrrlet/String-Encryption-and-Decryption.git)
+    git clone https://github.com/scarrrrrlet/String-Encryption-and-Decryption.git
     ```
 2.  **Navigate to the project directory:**
     ```sh
